@@ -1,0 +1,141 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            needium
+        </title>
+        <link rel="stylesheet" href="assets/bootstrap.min.css" type="text/css">
+        <style type="text/css" media="screen">
+
+           .topbar .inner{
+               background-color:#155496
+               background-image: -moz-linear-gradient(-90deg, #1C51B7 , #155496 );
+               background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #1C51B7 ), to( #155496 )); 
+               box-shadow:0 0 6px #999;
+            }
+            .container .inner{padding-top:60px}
+            .tweet{padding-top:0.5em;padding-bottom:0.5em}
+            .tweet p{font-size:1.25em;padding:0.5em 0em}
+            .tweet:nth-of-type(2n){background-color:#f9f9f9}
+            .tweet:hover{outline:1px solid #009eff;}
+            .erroneous{color:#900}
+            #fetch-progress{display:none}
+            #preview{box-shadow:0 0 6px #999;margin-bottom:3em;padding:1em 2em}
+            #preview .inner{width:940px}
+            #preview-note{margin-top:2em}
+            #preview-note > .row{border-top:1px dashed #ccc;padding-top:1em}
+            time{color:#999;padding-right:0.5em}
+        </style>
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    </head>
+    <body>
+        
+        <div class="topbar" data-scrollspy="scrollspy">
+            <div class="inner">
+                <div class="container">
+                    <a class="brand">Birdtalk</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="inner">
+                <div class="container">
+                    <div class="page-header">
+                        <h2>Provide</h2>
+                    </div>
+                </div>
+                <form class="row form-stacked">
+                    <fieldset>
+                        <legend>Conversation Tweets</legend>
+                        <div class="clearfix">
+                            <label for="name">Paste a list of twitter status URLS, twitter status IDs or a mix of both, separated by spaces, commas or one per line.</label>
+                            <div class="input">
+                                <textarea id="items" class="span16" rows="10" columns="50">
+http://twitter.com/#!/thetoine/status/133969513816395776
+/twitter.com/#!/SteveStreza/status/133962655391162368
+/pauldawalibi/status/133969453904961536
+133966906687361024
+http://twitter.com/#!/joe12343457456785679/status/133969513816395776
+http://twitter.com/#!/joe12343457456785679/status/133969513816395776#wert
+                                </textarea>
+                                <span class="help-block"><b>Note: </b>input not understood by Birdtalk will be automatically removed.</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Additional Texts</legend>
+                        <div class="clearfix">
+                            <label for="title">Page Title:</label>
+                            <div class="input">
+                                <input class="span16" type="text" name="title" id="title" placeholder="Example of a successful conversation." />
+                                <span class="help-block"><b>Note: </b>this field is optional.</span>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <label for="note">Foot Note: (optional)</label>
+                            <div class="input">
+                                <textarea id="note" placeholder="Notice how cool this is for your sales?" class="span16" rows="10" columns="50"></textarea>
+                                <span class="help-block"><b>Note: </b>this field is optional.</span>
+                            </div>
+                        </div>
+                    
+                    </fieldset>
+                    <fieldset>
+                        <legend>Output Options</legend>
+                        <div class="clearfix">
+                            <label for="branded"><input type="checkbox" id="branded" value="branded" />  add needium brand to output</label>
+                            <span class="help-block"><b>Note: </b>not shown in preview.</span>
+
+                        </div>
+                    </fieldset>
+                    <fieldset class="actions">
+                            <progress id="fetch-progress" class="span10" value="0" max="0"></progress>
+                            <button id="go" type="submit" class="btn primary pull-right">update preview</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>        
+        <div class="container">
+            <div class="inner">
+            <div class="page-header">
+                <h2>Preview <small>you can drag&amp;drop conversation items to re-order them</small></h2>
+            </div>
+            </div>
+        </div>
+        <div id="preview" class="container">
+            <div class="inner">
+                <div id="preview-title">
+                    <header class="page-header">
+                        <h2>Conversation</h2>
+                    </header>
+                </div>
+                <div id="preview-tweets"></div>
+                <div id="preview-note"></div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="inner">
+                <form>
+                    <fieldset class="actions">
+                        <div class="pull-right">
+                            <button id="export-html" type="submit" class="btn success">Export HTML</button>
+                            <!-- <button id="export-html" type="submit" class="btn success">Export PDF</button> -->
+                            
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>            
+        </div>
+        <script src="assets/strftime.js"></script>
+        <script src="assets/jquery-1.7.min.js"></script>
+        <script src="assets/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="assets/bootstrap-dropdown.js"></script>
+        <script src="assets/bootstrap-twipsy.js"></script>
+        <script src="assets/bootstrap-scrollspy.js"></script>
+        <script src="lib/birdtalk.js"></script>        
+    </body>
+</html>
