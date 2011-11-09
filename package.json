@@ -1,0 +1,9 @@
+{
+  "name": "birdtalk",
+  "author": "Author Name",
+  "description": "Project description.",
+  "version": "0.0.1",
+  "main": "lib/birdtalk.js",
+  "engines": { "node": "~v0.5.0" },
+  "dependencies": {},
+}
