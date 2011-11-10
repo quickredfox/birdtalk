@@ -78,6 +78,7 @@ tweet_template = "<div class=\"tweet row\">
         <button type=\"button\" class=\"btn danger remove\">remove</button>
     </div>
 </div>"
+
 error_template =  "<div class=\"tweet row erroneous\">
     <div class=\"span2\">
         <img width=\"50\" height=\"50\" src=\"http://assets.needium.com/blanks/avatar-160x160.png\">
@@ -89,11 +90,13 @@ error_template =  "<div class=\"tweet row erroneous\">
         <button type=\"button\" class=\"btn danger remove\">remove</button>
     </div>
 </div>"
+
 note_template = "<footer class=\"row\">
     <div class=\"span16\">
         <p><b>Note: </b>{note}</p>
     </div>
 </footer>"
+
 export_template = "<!DOCTYPE html> 
 <html lang=\"en\">
     <head>
@@ -101,7 +104,7 @@ export_template = "<!DOCTYPE html>
         <title>
             {title}
         </title>
-        <link rel=\"stylesheet\" href=\"http://assets.needium.com/lib/bootstrap/1.4.0/bootstrap.min.css\" type=\"text/css\">
+        <link rel=\"stylesheet\" href=\"http://assets.needium.com/lib/bootstrap/1.4.0/bootstrap.css\" type=\"text/css\">
         <style type=\"text/css\" media=\"all\">
             .tweet{padding-top:0.5em;padding-bottom:0.5em;}
             .tweet:nth-of-type(2n){background:#f0f0f0}
@@ -120,6 +123,7 @@ export_template = "<!DOCTYPE html>
         </div>
     </body>
 </html>"
+
 displayTweets  = ( tweets )->
     tweets.map (tweet,i)->
         if tweet.error
@@ -153,15 +157,22 @@ getMarkup = ()->
         note_markup:  $('#preview-note').html()
         tweets_markup:tweets.html()
     return export_template.supplant( data )
+
+
+
     
 $ ->
+
     lastValue = ''
+    
     $('#items').bind 'keyup', ()->
         currentValue =  $(this).val().trim()
         return if not currentValue or currentValue is lastValue
         {sids,items} = extractStatusIds( currentValue )
-        $(this).data('sids', sids ).val items.join("\n")
+        $(this).data('sids', sids ).val "#{items.join("\n")}\n"
+        
     $('#items').trigger 'keyup'
+    
     $('#go').bind 'click', (e)->
         e.preventDefault()
         currentValue = $('#items').val()
@@ -175,14 +186,30 @@ $ ->
             $('#preview-title h2').text( title )
         if note  = $('#note').val() 
             $('#preview-note').html( note_template.supplant( note: note ) )
+            
     $('.remove').live 'click', ()->
         $(this).parents('.tweet').remove()
+        
     $('#export-html').bind 'click', (e)->
         e.preventDefault()
         go = $('#go')
         go.one( 'click', ()-> popHTML getMarkup() ).trigger 'click'
-    $('#export-pdf').bind 'click', (e)->
-        e.preventDefault()
-        go = $('#go')
-        go.one( 'click', ()-> popPDF getMarkup() ).trigger 'click'
-
+        
+    Downloadify.create 'downloadify'
+        transparent: false
+        swf: 'assets/downloadify/media/downloadify.swf'
+        downloadImage: 'assets/download.png'
+        width: 100
+        height: 30
+        transparent: true
+        append: false
+        filename:->  
+            "report-#{(new Date()).getTime()}.html"
+        data:->  
+            getMarkup() 
+        onComplete:->
+            alert('Your File Has Been Saved!')
+        onCancel:->
+            alert('You have cancelled the saving of this file.')
+        onError:->
+            alert('Nothing to save!')
