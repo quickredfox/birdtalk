@@ -5,9 +5,8 @@
         <title>
             needium
         </title>
-        <link rel="stylesheet" href="assets/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" media="screen" href="http://assets.needium.com/lib/bootstrap/1.4.0/bootstrap.min.css" />
         <style type="text/css" media="screen">
-
            .topbar .inner{
                background-color:#155496
                background-image: -moz-linear-gradient(-90deg, #1C51B7 , #155496 );
@@ -27,7 +26,6 @@
             #preview-note > .row{border-top:1px dashed #ccc;padding-top:1em}
             time{color:#999;padding-right:0.5em}
         </style>
-        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     </head>
     <body>
         
@@ -82,14 +80,14 @@ http://twitter.com/#!/joe12343457456785679/status/133969513816395776#wert
                         </div>
                     
                     </fieldset>
-                    <fieldset>
+                    <!-- <fieldset>
                         <legend>Output Options</legend>
                         <div class="clearfix">
                             <label for="branded"><input type="checkbox" id="branded" value="branded" />  add needium brand to output</label>
                             <span class="help-block"><b>Note: </b>not shown in preview.</span>
 
                         </div>
-                    </fieldset>
+                    </fieldset> -->
                     <fieldset class="actions">
                             <progress id="fetch-progress" class="span10" value="0" max="0"></progress>
                             <button id="go" type="submit" class="btn primary pull-right">update preview</button>
@@ -123,19 +121,14 @@ http://twitter.com/#!/joe12343457456785679/status/133969513816395776#wert
                         <div class="pull-right">
                             <button id="export-html" type="submit" class="btn success">Export HTML</button>
                             <!-- <button id="export-html" type="submit" class="btn success">Export PDF</button> -->
-                            
                         </div>
-
                     </fieldset>
                 </form>
             </div>            
         </div>
         <script src="assets/strftime.js"></script>
-        <script src="assets/jquery-1.7.min.js"></script>
-        <script src="assets/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="assets/bootstrap-dropdown.js"></script>
-        <script src="assets/bootstrap-twipsy.js"></script>
-        <script src="assets/bootstrap-scrollspy.js"></script>
+        <script src="http://assets.needium.com/lib/jquery/1.7.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>  
+        <script src="http://assets.needium.com/lib/jquery-ui/1.8.16/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" charset="utf-8"></script>  
         <script src="lib/birdtalk.js"></script>        
     </body>
 </html>
