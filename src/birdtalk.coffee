@@ -80,7 +80,7 @@ tweet_template = "<div class=\"tweet row\">
 </div>"
 error_template =  "<div class=\"tweet row erroneous\">
     <div class=\"span2\">
-        <img width=\"50\" height=\"50\" src=\"http://assets.needium.com.s3.amazonaws.com/blanks/avatar-160x160.png\">
+        <img width=\"50\" height=\"50\" src=\"http://assets.needium.com/blanks/avatar-160x160.png\">
     </div>
     <div class=\"span12\">
         <p>{text}</p>
@@ -101,7 +101,7 @@ export_template = "<!DOCTYPE html>
         <title>
             {title}
         </title>
-        <link rel=\"stylesheet\" href=\"http://assets.needium.com.s3.amazonaws.com/lib/bootstrap/1.4.0/bootstrap.min.css\" type=\"text/css\">
+        <link rel=\"stylesheet\" href=\"http://assets.needium.com/lib/bootstrap/1.4.0/bootstrap.min.css\" type=\"text/css\">
         <style type=\"text/css\" media=\"all\">
             .tweet{padding-top:0.5em;padding-bottom:0.5em;}
             .tweet:nth-of-type(2n){background:#f0f0f0}
