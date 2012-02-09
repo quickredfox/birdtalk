@@ -11,9 +11,10 @@ $.fn.isLocked = ()-> $(@).hasClass('locked')
 $.userNotify  = (level="info", text, big=false)->
     classes = "alert-message #{level} container" 
     if big then classes += " block-message"
-    $msg =  $('<p>').html( text )
-    $box =  $('<div>').addClass( "alert-message alert-#{level} container" )
-    $box.append $('<a>').attr('href','#').addClass('close').text('x')
+    $msg =  $('<p>').html( text ).css('padding','5px')
+    alertclass = if level is 'warning' then '' else "alert-#{level}"
+    $box =  $('<div>').addClass( "alert-message #{alertclass} container" )
+    $box.append $('<a>').attr('href','#').addClass('close').attr('data-dismiss','alert').text('x')
     $box.append $msg
     $('body').prepend( $box.alert() )
     setTimeout ()->
