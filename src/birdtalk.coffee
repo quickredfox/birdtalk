@@ -32,14 +32,13 @@ getStatusID = ( value )->
     if matches then return matches[ 0 ]
     return false
 
-    
 readForm = ()->
     $('.source-input.error').removeClass('error')
     data  = { status_ids: {}, title: false, note: false, logo: false }
     $('.source-input').each ()-> 
         $field = $(@)
         value = $field.find('input').val()
-        if SID = getStatusID value
+        if SID = getStatusID( value )
             data.status_ids[SID] = SID
         else if value isnt ''
             $field.addClass('error').on 'change', ()-> $(@).removeClass('error')
