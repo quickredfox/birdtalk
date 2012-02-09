@@ -29,9 +29,9 @@ getStatusID = ( value )->
     value = value.replace /\?.+/g, ''
     if /^\d+$/.test value then return value
     matches = value.match /(\d+)$/g
-    if matches then return matches[ 1 ]
+    if matches then return matches[ 0 ]
     return false
-    
+
     
 readForm = ()->
     $('.source-input.error').removeClass('error')
