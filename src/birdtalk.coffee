@@ -28,8 +28,8 @@ $.userSuccess =-> $.userNotify( 'success', arguments[0], arguments[1] )
 getStatusID = ( value )->
     value = value.replace /\?.+/g, ''
     if /^\d+$/.test value then return value
-    matches = value.match /\d+/g
-    if matches then return matches[ matches.length-1 ]
+    matches = value.match /(\d+)$/g
+    if matches then return matches[ 1 ]
     return false
     
     
