@@ -38,8 +38,9 @@ readForm = ()->
     data  = { status_ids: {}, title: false, note: false, logo: false }
     $('.source-input').each ()-> 
         $field = $(@)
-        if sid = getStatusID value = $field.find('input').val()
-            data.status_ids[sid] = sid
+        value = $field.find('input').val()
+        if SID = getStatusID value
+            data.status_ids[SID] = SID
         else if value isnt ''
             $field.addClass('error').on 'change', ()-> $(@).removeClass('error')
     title = $('#title').val().trim()
