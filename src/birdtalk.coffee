@@ -26,7 +26,7 @@ $.userError   =-> $.userNotify( 'error',   arguments[0], arguments[1] )
 $.userSuccess =-> $.userNotify( 'success', arguments[0], arguments[1] )
 
 getStatusID = ( value )->
-    value = value.replace /\?.+/g, ''
+    value = value.trim()
     if /^\d+$/.test value then return value
     matches = value.match /(\d+)$/g
     if matches then return matches[ 0 ]
