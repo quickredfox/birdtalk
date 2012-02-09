@@ -1,88 +1,136 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            needium
+        </title>
+        <link rel="stylesheet" media="screen" href="lib/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" media="screen" href="lib/app.css" />   
 
-  <title>needium/birdtalk @ GitHub</title>
+    </head>
+    <body>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #210605;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #def9fa; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #def9fa; }
-    h3 { text-align: center; color: #def9fa; }
-    a { color: #def9fa; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+        <div class="navbar navbar-fixed-top" data-scrollspy="scrollspy">
+           <div class="navbar-inner">
+               <div class="container">
+                   <a class="brand">Birdtalk</a>
+               </div>
+           </div>
+        </div>
+        
+        <div class="container">
+            
+                <form id="sorter" class="sorter">
+                    <fieldset>
+                        <legend>
+                            <a href="#" class="close" data-dismiss="sorter">x</a>
+                            Tweet Organizer
+                        </legend>
+                        <br>  
+                        <p>Re-order tweets by drag&amp;drop or click the "remove" button to remove a tweet.</p>
+                        <div class="sortables row">
 
-<body>
-  <a href="https://github.com/needium/birdtalk"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+                        </div>
 
-  <div id="container">
+                    </fieldset>
+                    <fieldset class="form-actions">
+                        <div class="btn-group  pull-right">
+                            
+                            <a href="#" class="btn btn-large" data-dismiss="sorter">Cancel</a>                        
+                            <a href="#" class="btn btn-large btn-primary render">Render</a>
+                        </div>
+                    </fieldset>
+                </form>
+                <!-- <div id="sorter" class="row">
+                    <div class="sortables">
+                        
+                    </div>
+                </div> -->
+                
+                <form id="editor" class="form-custom">
+                    <div class="row">
+                        <fieldset class="span6">
+                            <legend>Source Tweets</legend>
+                            <br>
+                            <p>Enter either a twitter status URL or a numeric status ID in the input bellow.</p>
+                            <div class="source-inputs">
+                                <div class="source-input clearfix">
+                                    <input value="" placeholder="Tweet URL or status ID" type="text" class="span4" /><button type="button" class="add btn btn-small span1">+</button><button type="button" class="remove btn btn-danger btn-small span1">-</button>
+                                </div>
+                                <div class="source-input clearfix">
+                                    <input value="" placeholder="Tweet URL or status ID" type="text" class="span4" /><button type="button" class="add btn btn-small span1">+</button><button type="button" class="remove btn btn-danger btn-small span1">-</button>
+                                </div>
+                                <div class="source-input clearfix">
+                                    <input value="" placeholder="Tweet URL or status ID" type="text" class="span4" /><button type="button" class="add btn btn-small span1">+</button><button type="button" class="remove btn btn-danger btn-small span1">-</button>
+                                </div>
+                                <div class="source-input clearfix">
+                                    <input placeholder="Tweet URL or status ID" type="text" class="span4" /><button type="button" class="add btn btn-small span1">+</button><button type="button" class="remove btn btn-danger btn-small span1">-</button>
+                                </div>
+                                <div class="source-input clearfix">
+                                    <input placeholder="Tweet URL or status ID" type="text" class="span4" /><button type="button" class="add btn btn-small span1">+</button><button type="button" class="remove btn btn-danger btn-small span1">-</button>
+                                </div>
+                                <div class="source-input clearfix">
+                                    <input placeholder="Tweet URL or status ID" type="text" class="span4" /><button type="button" class="add btn btn-small span1">+</button><button type="button" class="remove btn btn-danger btn-small span1">-</button>
+                                </div>
+                                <div class="source-input clearfix">
+                                    <input placeholder="Tweet URL or status ID" type="text" class="span4" /><button type="button" class="add btn btn-small span1">+</button><button type="button" class="remove btn btn-danger btn-small span1">-</button>
+                                </div>
+                                <div class="source-input clearfix">
+                                    <input placeholder="Tweet URL or status ID" type="text" class="span4" /><button type="button" class="add btn btn-small span1">+</button><button type="button" class="remove btn btn-danger btn-small span1">-</button>
+                                </div>
+                            </div>
+                            <p class="help-block">To remove/add inputs use the <kbd class="btn danger">-</kbd> and <kbd class="btn">+</kbd>  buttons on the right of each input.</p>
+                        </fieldset>
+                        <fieldset class="span6">
+                            <legend>Supporting Texts</legend>
+                            <br>
+                            <div class="control-group">
+                                <label class="control-label">
+                                    Page Title:
+                                </label>
+                                <div class="controls">
+                                    <input class="span6" type="text" name="title" id="title" placeholder="Example of a successful conversation." />
+                                       <span class="help-block"><b>Note: </b>this field is optional.</span>
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label class="control-label">
+                                    Foot Note: (optional)
+                                </label>
+                                <div class="controls">
+                                    <textarea id="note" placeholder="Notice how cool this is for your sales?" class="span6" rows="5" columns="50"></textarea>
+                                    <span class="help-block"><b>Note: </b>this field is optional.</span>
+                                </div>
+                            </div>
 
-    <div class="download">
-      <a href="https://github.com/needium/birdtalk/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/needium/birdtalk/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+                             <legend>Decorations</legend>
+                             <div class="control-group">
+                                 <div class="controls">
+                                     <label class="checkbox">
+                                        <input type="checkbox" id="logo" name="logo">
+                                        Include the needium logo.
+                                     </label>
+                                     <span class="help-block"><b>Note: </b>these fields are optional.</span>
+                                 </div>
+                             </div>
+                             
+                        </fieldset>
+                    </div>
+                    <fieldset class="form-actions">
+                       <button type="submit" class="btn-large btn btn-primary pull-right">Fetch Tweets</button>
+                    </fieldset>
+                </form>
+        </div>
+        
 
-    <h1><a href="https://github.com/needium/birdtalk">birdtalk</a>
-      <span class="small">by <a href="https://github.com/needium">needium</a></span></h1>
-
-    <div class="description">
-      
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Praized Media (api@praizedmedia.com)<br/>Quickredfox (code@quickredfox.at)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>needium (dev@needium.com)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/needium/birdtalk/zipball/master">zip</a> or
-      <a href="https://github.com/needium/birdtalk/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/needium/birdtalk</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/needium/birdtalk">needium/birdtalk</a>
-    </div>
-
-  </div>
-
-</body>
+        <script src="http://assets.needium.com/lib/jquery/1.7.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>  
+        <script src="lib/jquery-deferred-whens.min.js" type="text/javascript" charset="utf-8"></script>  
+        <script src="http://assets.needium.com/lib/jquery-ui/1.8.16/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" charset="utf-8"></script>  
+        <script src="lib/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>  
+        <script src="lib/strftime.js"></script>
+        <script src="lib/birdtalk.js"></script>  
+ 
+    </body>
 </html>
