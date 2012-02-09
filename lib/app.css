@@ -125,3 +125,4 @@
               -o-user-select: none;
               user-select: none;}
 */             /*.drag-handle{position:absolute;left:0;top:5px;font-size:25px;background:#ccc}*/
+button.busy{opacity:0.5}

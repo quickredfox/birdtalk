@@ -127,6 +127,7 @@ onSubmit = (e)->
     else
         progress = $.progressBar( 0, data.status_ids.length )
         $('fieldset.form-actions').prepend( progress )
+        $('#editor .form-actions button').addClass('busy')
         fetch = $.whenSome.apply null, data.status_ids.map ( status_id )-> 
             promise = fetchTweet( status_id )
             promise.always ()-> progress.touch()
@@ -143,7 +144,8 @@ onSubmit = (e)->
                     $preview = renderPreview( tweet )
                     previews.push $preview
                     $('#sorter .sortables').append( $preview ).sortable()
-                    
+        fetch.always ()->
+            $('#editor .form-actions button').removeClass('busy')
                     
 
 getMarkup = ( data )->     
