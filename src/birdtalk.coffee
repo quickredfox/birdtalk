@@ -213,7 +213,15 @@ onRender = (e)->
     data.tweets = tweets
     data.title ||= "Conversation report"
     closeSorter ()->
-        window.open "data:text/html;charset=UTF8,#{encodeURIComponent( getMarkup( data ) )}"
+        $(document.body).empty().css({margin:0,padding:0})
+        iframe = $('<iframe>')
+          .attr('src',"data:text/html;charset=UTF8,#{encodeURIComponent( getMarkup( data ) )}")
+          .css( { position:'absolute',width:window.width, height:window.height, top:0, right: 0, bottom:0, left:0, margin:0, padding:0,border:0})
+          .appendTo(document.body)
+        $(window).on 'resize', ()-> 
+          iframe.width( window.width)
+          iframe.height( window.height)
+        # window.open , "conversation"
 
     
     
